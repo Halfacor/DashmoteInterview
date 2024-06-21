@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px;
+    height: 70px;
+    font-size: 12px;
+    box-shadow: 2px 10px 5px rgb(240, 238, 238);
+}
+
+.colorBar {
+    width: 10px;   
+    min-width: 10px;   
+}
+
+.details {
+    display: flex;
+    overflow: hidden;
+    flex-grow: 1;
+    align-items: center;   
+    white-space: nowrap;
+}
+
+.avatar {
+    vertical-align: middle;
+    font-weight: bold;
+    margin: 15px;
+    flex-shrink: 0;
+}
+
+.title {
+    flex: 1 1 485px;
+    min-width: 215px;
+    margin: 0 30px;
+    padding: 8px;
+    font-weight: bold;
+    color: #080352;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user {
+    flex-basis: 117px;
+    min-width: 45px;
+    padding: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dashboard {
+    display: flex;
+    flex: 0 0 117px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    box-sizing: border-box;
+    color: #00CC74;
+    background-color: #CCF5E3;
+    border: 1px solid #00CC74;
+    border-radius: 4px;
+    margin: 0 84px 0 116px;
+    padding: 4px 16px;
+}
+
+.dashboardText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deleteButton {
+    margin: 0 15px;
+    flex-shrink: 0;
+}
