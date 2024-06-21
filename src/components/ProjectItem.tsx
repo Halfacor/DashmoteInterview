@@ -1,6 +1,6 @@
 import React from "react";
 import { Project } from "./Dashboard";
-import { Avatar, Button } from "antd";
+import { Avatar, Button, Modal } from "antd";
 import projectItemStyles from "./ProjectItem.module.css";
 
 interface ProjectItemProps {
@@ -54,7 +54,22 @@ const ProjectItem = ({ project, onDelete }: ProjectItemProps) => {
           className={projectItemStyles.deleteButton}
           type="text"
           danger
-          onClick={() => onDelete(project)}
+          onClick={() => {
+            Modal.confirm({
+              title: "Confirm Projection Deletion",
+              content: `Want to delete project ${project.name} ?`,
+              footer: (_, { OkBtn, CancelBtn }) => (
+                <>
+                  <CancelBtn />
+                  <OkBtn />
+                </>
+              ),
+              onOk: (close) => {
+                onDelete(project);
+                close();
+              },
+            });
+          }}
         >
           Delete
         </Button>
