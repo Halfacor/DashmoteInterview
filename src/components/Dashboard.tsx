@@ -15,11 +15,15 @@ export interface Project {
 const DashBoard = () => {
   const [projects, setProjects] = useProjects();
 
+  const handleDelete = (projectToDelete: Project) => {
+    setProjects(projects.filter((project) => projectToDelete !== project));
+  };
+
   return (
     <div className={dashboardStyles.dashboard}>
       <Flex align="end" vertical>
         <SearchBox />
-        <ProjectList projects={projects} />
+        <ProjectList projects={projects} onDelete={handleDelete} />
       </Flex>
     </div>
   );

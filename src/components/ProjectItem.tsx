@@ -5,6 +5,7 @@ import projectItemStyles from "./ProjectItem.module.css";
 
 interface ProjectItemProps {
   project: Project;
+  onDelete: (projectToDelete: Project) => void;
 }
 
 // todos: replace hardcoded color with mapping with respect to the category
@@ -20,7 +21,7 @@ const getAvatarBackgroundColorBasedOnCategory = (category: string): string => {
   return "grey";
 };
 
-const ProjectItem = ({ project }: ProjectItemProps) => {
+const ProjectItem = ({ project, onDelete }: ProjectItemProps) => {
   return (
     <div className={projectItemStyles.container}>
       <div
@@ -49,7 +50,12 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
             className={projectItemStyles.dashboardText}
           >{`${project.dashboards} dashboards`}</span>
         </div>
-        <Button className={projectItemStyles.deleteButton} type="text" danger>
+        <Button
+          className={projectItemStyles.deleteButton}
+          type="text"
+          danger
+          onClick={() => onDelete(project)}
+        >
           Delete
         </Button>
       </div>

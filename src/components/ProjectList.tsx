@@ -5,13 +5,14 @@ import projectListStyles from "./ProjectList.module.css";
 
 interface ProjectListProps {
   projects: Project[];
+  onDelete: (projectToDelete: Project) => void;
 }
 
-const ProjectList = ({ projects }: ProjectListProps) => {
+const ProjectList = ({ projects, onDelete }: ProjectListProps) => {
   return (
     <div className={projectListStyles.container}>
       {projects.map((project) => (
-        <ProjectItem key={project.name} project={project} />
+        <ProjectItem key={project.name} project={project} onDelete={onDelete} />
       ))}
     </div>
   );
