@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBox from "./SearchBox";
 import ProjectList from "./ProjectList";
 import useProjects from "../hooks/useProjects";
@@ -12,17 +12,27 @@ export interface Project {
   category: string;
 }
 
+export interface ProjectQuery {
+  searchTerm: string;
+}
+
 const DashBoard = () => {
-  const [projects, setProjects] = useProjects();
+  const [projectQuery, setProjectQuery] = useState<ProjectQuery>(
+    {} as ProjectQuery
+  );
+  const [projects, setProjects] = useProjects(projectQuery);
 
   const handleDelete = (projectToDelete: Project) => {
     setProjects(projects.filter((project) => projectToDelete !== project));
   };
 
+  const handleSearch = (phrase: string) =>
+    setProjectQuery({ ...projectQuery, searchTerm: phrase });
+
   return (
     <div className={dashboardStyles.dashboard}>
       <Flex align="end" vertical>
-        <SearchBox />
+        <SearchBox onSearch={handleSearch} />
         <ProjectList projects={projects} onDelete={handleDelete} />
       </Flex>
     </div>
